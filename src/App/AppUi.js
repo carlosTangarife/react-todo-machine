@@ -3,31 +3,49 @@ import {TodoSearch} from "../Components/TodoSearch";
 import {TodoList} from "../Components/TodoList";
 import {TodoItem} from "../Components/TodoItem";
 import {CreateTodoButton} from "../Components/CreateTodoButton";
+import {EmptyTodos} from "../Components/EmptyTodos";
+import {TodosError} from "../Components/TodosError";
+import {TodosLoading} from "../Components/TodosLoading";
 
-export const AppUi = ({todos, searchValue, setSearchValue, searchedTodos, completeTodo, deleteTodo}) => (
-    <>
-        <TodoCounter
-            total={todos.length}
-            completed={todos.filter(todo => todo.completed).length}
-            finished={todos.length === todos.filter(todo => todo.completed).length}
-        />
+export const AppUi = ({
+                          totalTodos,
+                          totalCompleted,
+                          totalFinished,
+                          searchValue,
+                          setSearchValue,
+                          searchedTodos,
+                          completeTodo,
+                          deleteTodo,
+                          isLoading,
+                          isError
+                      }) => (<>
+    <TodoCounter
+        total={totalTodos}
+        completed={totalCompleted}
+        finished={totalFinished}
+    />
 
-        <TodoSearch
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-        />
+    <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+    />
 
-        <TodoList>
-            {
-                searchedTodos.map((todo) =>
-                    <TodoItem
-                        key={todo.id}
-                        {...todo}
-                        completeTodo={() => completeTodo(todo.id)}
-                        deleteTodo={() => deleteTodo(todo.id)}
-                    />)}
-        </TodoList>
+    <TodoList>
+        {isLoading && <>
+            <TodosLoading />
+            <TodosLoading />
+            <TodosLoading />
+        </>}
+        {isError && <TodosError />}
+        {!isLoading && searchedTodos.length === 0 && <EmptyTodos />}
 
-        <CreateTodoButton/>
-    </>
-)
+        {searchedTodos?.map((todo) => <TodoItem
+            key={todo.id}
+            {...todo}
+            completeTodo={() => completeTodo(todo.id)}
+            deleteTodo={() => deleteTodo(todo.id)}
+        />)}
+    </TodoList>
+
+    <CreateTodoButton/>
+</>)

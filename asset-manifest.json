@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/carlosTangarife/react-todo-machine/static/css/main.96aee242.css",
+    "main.js": "/carlosTangarife/react-todo-machine/static/js/main.72e56bea.js",
+    "index.html": "/carlosTangarife/react-todo-machine/index.html",
+    "static/media/delete.svg": "/carlosTangarife/react-todo-machine/static/media/delete.023a83c872f4b042be8cfd30c543ab6e.svg",
+    "static/media/check.svg": "/carlosTangarife/react-todo-machine/static/media/check.b788e3c37b9e946d593b72b04a2e81ae.svg",
+    "main.96aee242.css.map": "/carlosTangarife/react-todo-machine/static/css/main.96aee242.css.map",
+    "main.72e56bea.js.map": "/carlosTangarife/react-todo-machine/static/js/main.72e56bea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.96aee242.css",
+    "static/js/main.72e56bea.js"
+  ]
+}
